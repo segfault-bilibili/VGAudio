@@ -73,10 +73,16 @@ namespace VGAudio.Codecs.CriHca
         {
             var reader = new BitReader(audio);
 
+            var str = "";
             UnpackFrame(frame, reader);
+            str += "UnpackFrame\n" + frame.dump();
             DequantizeFrame(frame);
+            str += "DequantizeFrame\n" + frame.dump();
             RestoreMissingBands(frame);
+            str += "RestoreMissingBands\n" + frame.dump();
             RunImdct(frame);
+            str += "RunImdct\n" + frame.dump();
+            System.IO.File.WriteAllText(@"F:\segfault-git\log.txt", str);
             PcmFloatToShort(frame, pcmOut);
         }
 

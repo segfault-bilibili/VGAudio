@@ -11,6 +11,16 @@ namespace VGAudio.Codecs.CriHca
         public int AcceptableNoiseLevel { get; set; }
         public int EvaluationBoundary { get; set; }
 
+        public string dump()
+        {
+            var str = "";
+            str += "Channels =";
+            foreach (var c in Channels) str += c.dump("    ");
+            str += "AthCurve =" + CriHcaChannel.dumpArray("    ", this.AthCurve);
+            str += "AcceptableNoiseLevel = " + this.AcceptableNoiseLevel + "\n";
+            str += "EvaluationBoundary = " + this.EvaluationBoundary + "\n";
+            return str;
+        }
         public CriHcaFrame(HcaInfo hca)
         {
             Hca = hca;

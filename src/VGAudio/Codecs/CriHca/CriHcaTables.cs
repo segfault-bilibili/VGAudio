@@ -3,7 +3,7 @@ using VGAudio.Utilities;
 
 namespace VGAudio.Codecs.CriHca
 {
-    internal static class CriHcaTables
+    public static class CriHcaTables
     {
         static CriHcaTables()
         {
@@ -77,7 +77,7 @@ namespace VGAudio.Codecs.CriHca
             return BitConverter.Int64BitsToDouble(BitConverter.DoubleToInt64Bits(boundary) - steps);
         }
 
-        private static readonly byte[] PackedTables =
+        public static readonly byte[] PackedTables =
         {
             0x01, 0x62, 0x07, 0x00, 0x00, 0x7C, 0xD0, 0x85, 0x71, 0x03, 0x41, 0x0C, 0x85, 0x61, 0xC1, 0xB2,
             0xD9, 0xED, 0xA4, 0xC7, 0xD4, 0x6B, 0x3C, 0xD0, 0x3B, 0x52, 0xF0, 0x1F, 0xD2, 0x77, 0xA8, 0x59,

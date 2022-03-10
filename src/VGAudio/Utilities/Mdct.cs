@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using VGAudio.Codecs.CriHca;
 
 namespace VGAudio.Utilities
 {
@@ -22,6 +23,23 @@ namespace VGAudio.Utilities
         private readonly double[] _scratchMdct;
         private readonly double[] _scratchDct;
 
+        public string dump(string indent)
+        {
+            var str = "{\n";
+            str += indent + "    MdctBits = " + this.MdctBits.ToString() + "\n";
+            str += indent + "    MdctSize = " + this.MdctSize.ToString()  + "\n";
+            str += indent + "    Scale = " + this.Scale.ToString()  + "\n";
+            str += indent + "    _tableBits = " + Mdct._tableBits.ToString() + "\n";
+            str += indent + "    SinTables =" + CriHcaChannel.dumpArray(indent + "    ", SinTables);
+            str += indent + "    CosTables =" + CriHcaChannel.dumpArray(indent + "    ", CosTables);
+            str += indent + "    ShuffleTables =" + CriHcaChannel.dumpArray(indent + "    ", ShuffleTables);
+            str += indent + "    _mdctPrevious =" + CriHcaChannel.dumpArray(indent + "    ", _mdctPrevious);
+            str += indent + "    _imdctPrevious =" + CriHcaChannel.dumpArray(indent + "    ", _imdctPrevious);
+            str += indent + "    _imdctWindow =" + CriHcaChannel.dumpArray(indent + "    ", _imdctWindow);
+            str += indent + "    _scratchMdct =" + CriHcaChannel.dumpArray(indent + "    ", _scratchMdct);
+            str += indent + "    _scratchDct =" + CriHcaChannel.dumpArray(indent + "    ", _scratchDct);
+            return str + indent + "}\n";
+        }
         public Mdct(int mdctBits, double[] window, double scale = 1)
         {
             SetTables(mdctBits);

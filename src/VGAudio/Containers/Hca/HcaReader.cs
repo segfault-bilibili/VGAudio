@@ -151,16 +151,16 @@ namespace VGAudio.Containers.Hca
         private static void ReadCompChunk(BinaryReader reader, HcaStructure structure)
         {
             structure.Hca.FrameSize = reader.ReadInt16();
-            structure.Hca.MinResolution = reader.ReadByte();
-            structure.Hca.MaxResolution = reader.ReadByte();
-            structure.Hca.TrackCount = reader.ReadByte();
-            structure.Hca.ChannelConfig = reader.ReadByte();
-            structure.Hca.TotalBandCount = reader.ReadByte();
-            structure.Hca.BaseBandCount = reader.ReadByte();
-            structure.Hca.StereoBandCount = reader.ReadByte();
-            structure.Hca.BandsPerHfrGroup = reader.ReadByte();
-            structure.Reserved1 = reader.ReadByte();
-            structure.Reserved2 = reader.ReadByte();
+            structure.Hca.MinResolution = reader.ReadByte();//compParam[0]
+            structure.Hca.MaxResolution = reader.ReadByte();//compParam[1]
+            structure.Hca.TrackCount = reader.ReadByte();//compParam[2]
+            structure.Hca.ChannelConfig = reader.ReadByte();//compParam[3]
+            structure.Hca.TotalBandCount = reader.ReadByte();//compParam[4]
+            structure.Hca.BaseBandCount = reader.ReadByte();//compParam[5]
+            structure.Hca.StereoBandCount = reader.ReadByte();//compParam[6]
+            structure.Hca.BandsPerHfrGroup = reader.ReadByte();//compParam[7]
+            structure.Reserved1 = reader.ReadByte();//compParam[8]
+            structure.Reserved2 = reader.ReadByte();//compParam[9]
         }
 
         private static void ReadDecChunk(BinaryReader reader, HcaStructure structure)
